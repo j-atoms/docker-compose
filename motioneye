@@ -7,14 +7,15 @@ services:
       - "9595:9595"
       - "9696:9696"
       - "8765:8765"
+      - "554:554"
 
     devices:
-      - /dev/video0
-      - /dev/video1
+      - /dev/video0 #remove if server only
+      - /dev/video1 #remove if server only
 
     volumes:
-      - /mnt/md127/494raid6/motioneye:/etc/motioneye
-      - /mnt/md127/494raid6/motioneye:/var/lib/motioneye
+      - /location/of/volumne:/etc/motioneye
+      - /location/of/volume:/var/lib/motioneye
 
     restart: unless-stopped
 
