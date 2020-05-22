@@ -13,8 +13,10 @@ services:
       - /dev/video1
 
     volumes:
-      - /location/of/volume:/etc/motioneye
-      - /location/of/volume:/var/lib/motioneye
+      - /mnt/md127/494raid6/motioneye:/etc/motioneye
+      - /mnt/md127/494raid6/motioneye:/var/lib/motioneye
+
+    restart: unless-stopped
 
 volumes:
   etc_motioneye:
