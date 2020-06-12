@@ -1,0 +1,13 @@
+version: "3"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    network_mode: "host"
+    volumes:
+      - /path/to/volume/jellyfin:/config
+      - /path/to/volume/tv:/data/tvshows
+      - /path/to/volume/film:/data/movies
+      - /path/to/volume/tunes:/data/music
+      - /path/to/volume/jellyfin/transcode:/transcode
+      - /path/to/volume/jellyfin/cache:/cache
+

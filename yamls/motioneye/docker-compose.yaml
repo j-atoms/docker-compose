@@ -1,0 +1,24 @@
+---
+version: "3.5"
+services:
+  motioneye:
+    image: ccrisan/motioneye:master-amd64  # Change to ccrisan/motioneye:master-armhf for ARM chips (Pi etc.)
+    ports:
+      - "9595:9595"
+      - "9696:9696"
+      - "8765:8765"
+      - "554:554"
+
+    devices:
+      - /dev/video0 #remove if server only
+      - /dev/video1 #remove if server only
+
+    volumes:
+      - /location/of/volumne:/etc/motioneye
+      - /location/of/volume:/var/lib/motioneye
+
+    restart: unless-stopped
+
+volumes:
+  etc_motioneye:
+  var_lib_motioneye:
