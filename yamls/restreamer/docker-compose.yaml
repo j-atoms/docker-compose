@@ -1,0 +1,24 @@
+version: "3"
+services:
+  restreamer:
+    image: datarhei/restreamer
+    container_name: restreamer
+    ports:
+      - 8181:8080
+    volumes:
+      - "~/db:/restreamer/db"
+    environment:
+      - RS_USERNAME=admin
+      - RS_PASSWORD=admin
+      - RS_LOGLEVEL=4
+      - RS_TIMEZONE=America/Chicago
+      - RS_MODE=USBCAM
+      - RS_DEBUG=true
+      - RS_USBCAM_WIDTH=1280
+      - RS_USBCAM_HEIGHT=720
+      - RS_USBCAM_AUDIO=false
+      - RS_USBCAM_AUDIODEVICE=1
+    devices:
+      - /dev/video1:/dev/video
+      - /dev/snd/
+    restart: unless-stopped
