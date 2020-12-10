@@ -5,6 +5,7 @@ services:
     container_name: restreamer
     ports:
       - 8181:8080
+      - 1935:1935
     volumes:
       - "~/db:/restreamer/db"
     environment:
@@ -12,13 +13,22 @@ services:
       - RS_PASSWORD=admin
       - RS_LOGLEVEL=4
       - RS_TIMEZONE=America/Chicago
-      - RS_MODE=USBCAM
       - RS_DEBUG=true
-      - RS_USBCAM_WIDTH=1280
-      - RS_USBCAM_HEIGHT=720
-      - RS_USBCAM_AUDIO=false
-      - RS_USBCAM_AUDIODEVICE=1
+      - RS_MODE=USBCAM
+      - RS_USBCAM_FPS=30
+      - RS_USBCAM_GOP=60
+      - RS_USBCAM_BITRATE=4000000
+      - RS_USBCAM_H264PRESET=slow
+      - RS_USBCAM_WIDTH=1920
+      - RS_USBCAM_HEIGHT=1080
+      - RS_USBCAM_AUDIO=true
+      - RS_USBCAM_AUDIODEVICE=1,0
+      - RS_USBCAM_AUDIOBITRATE=48000
+      - RS_USBCAM_AUDIOCHANNELS=2
+      - RS_USBCAM_AUDIOLAYOUT=stereo
+      - RS_USBCAM_AUDIOSAMPLING=44100
+
     devices:
-      - /dev/video1:/dev/video
-      - /dev/snd/
+      - /dev/video0:/dev/video
+      - /dev/snd
     restart: unless-stopped
